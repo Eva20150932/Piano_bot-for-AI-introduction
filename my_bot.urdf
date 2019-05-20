@@ -2,11 +2,11 @@
 	<!--底盘--><!--这是注释-->
 	<link name ="underpan">
 		<visual>
-			<geometry><box size="0.5 0.4 0.1"/></geometry>
+			<geometry><box size="0.4 0.3 0.05"/></geometry>
 			<!--参数都是以米为单位-->	
 		</visual>
 		<collision>
-			<geometry><box size="0.5 0.4 0.1"/></geometry>	
+			<geometry><box size="0.4 0.3 0.05"/></geometry>	
 			<!--基本状态下ros的x轴朝前，y轴朝左，z轴朝上-->
 		</collision>
 	</link>
@@ -16,11 +16,11 @@
 		<visual>
 			<origin rpy="0 0 0"xyz="0 0 0.6" />
 			<!--原点是物体中心-->
-			<geometry><box size="0.1 0.2 1.2" /></geometry>
+			<geometry><box size="0.05 0.1 1.2" /></geometry>
 		</visual>	
 		<collision>
 			<origin rpy="0 0 0"xyz="0 0 0.6"/>
-			<geometry><box size="0.1 0.2 1.2"/></geometry>
+			<geometry><box size="0.05 0.1 1.2"/></geometry>
 		</collision>
 	</link>
 	
@@ -186,7 +186,7 @@
 		</collision>
 	</link>
 
-	<!--连接轨道和琴键-->
+	<!--连接轨道和琴键，琴键时从左到右序号递增-->
 	<joint name="key1_up_joint" type="floating">
 		<parent link="rail"/>
 		<child link="key1_up"/>
@@ -247,15 +247,22 @@
 	<joint name="base joint" type="fixed">
 		<parent link="underpan"/>
 		<child link="spine"/>
-		<origin rpy="0 0 0"xyz="0.2 0 0.05"/>
+		<origin rpy="0 0 0"xyz="0.175 0 0.05"/>
 	</joint>
 	
 	<!--连接四个轮子-->
+	<!--
+	参数：
+	底盘 x 0.4 y 0.3 z 0.5
+	轮子 radius 0.1 length 0.05
+	关节原点在轮子[子关节]原点？
+	设计时，轮子中心在与底盘头尾平行的线上，横向距离时底盘y/2+轮子length/2
+	-->
 	<!--左前-->
 	<joint name="wheel_joint1" type="planar">
 		<parent link="underpan"/>
 		<child link="wheel_left_front"/>
-		<origin rpy="1.57 0 0"xyz="0.2 0.225 0"/>
+		<origin rpy="1.57 0 0"xyz="0.2 0.175 0"/>
 		<!--rpy即欧拉角是用弧度表示，90度应该是1.57-->
 		<axis xyz="0 0 1" />
 	</joint>
@@ -263,21 +270,21 @@
 	<joint name="wheel_joint2" type="planar">
 		<parent link="underpan"/>
 		<child link="wheel_right_front"/>
-		<origin rpy="1.57 0 0"xyz="0.2 -0.225 0"/>
+		<origin rpy="1.57 0 0"xyz="0.2 -0.175 0"/>
 		<axis xyz="0 0 1" />
 	</joint>
 	<!--左后-->
 	<joint name="wheel_joint3" type="planar">
 		<parent link="underpan"/>
 		<child link="wheel_left_back"/>
-		<origin rpy="1.57 0 0"xyz="-0.2 0.225 0"/>
+		<origin rpy="1.57 0 0"xyz="-0.2 0.175 0"/>
 		<axis xyz="0 0 1" />
 	</joint>
 	<!--右后-->
 	<joint name="wheel_joint4" type="planar">
 		<parent link="underpan"/>
 		<child link="wheel_right_back"/>
-		<origin rpy="1.57 0 0"xyz="-0.2 -0.225 0"/>
+		<origin rpy="1.57 0 0"xyz="-0.2 -0.175 0"/>
 		<axis xyz="0 0 1" />
 	</joint>
 	
