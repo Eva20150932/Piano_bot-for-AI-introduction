@@ -1,0 +1,321 @@
+<robot name="piano_bot_2">
+	<!--底盘--><!--这是注释-->
+	<link name ="underpan">
+		<visual>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><box size="0.4 0.3 0.05"/></geometry>
+			<!--参数都是以米为单位-->	
+		</visual>
+		<collision>
+			<geometry><box size="0.4 0.3 0.05"/></geometry>	
+			<!--基本状态下ros的x轴朝前，y轴朝左，z轴朝上-->
+		</collision>
+	</link>
+	
+	<!--杆子-->
+	<link name="spine">
+		<visual>
+			<origin rpy="0 0 0"xyz="0 0 -0.6" />
+			<!--原点是物体中心-->
+			<geometry><box size="0.05 0.1 1.2" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0 0 -0.6"/>
+			<geometry><box size="0.05 0.1 1.2"/></geometry>
+		</collision>
+	</link>
+	
+	
+	<!--四个轮子-->
+	<link name="wheel_left_front"><!--左前轮-->
+		<visual>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><cylinder radius="0.1"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><cylinder radius="0.1"length="0.05" /></geometry>
+		</collision>
+	</link>	
+	<link name="wheel_left_back"><!--左后轮-->
+		<visual>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><cylinder radius="0.1"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><cylinder radius="0.1"length="0.05" /></geometry>
+		</collision>
+	</link>	
+	<link name="wheel_right_front"><!--右前轮-->
+		<visual>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><cylinder radius="0.1"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><cylinder radius="0.1"length="0.05" /></geometry>
+		</collision>
+	</link>	
+	<link name="wheel_right_back"><!--右后轮-->
+		<visual>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><cylinder radius="0.1"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0 0 0" />
+			<geometry><cylinder radius="0.1"length="0.05" /></geometry>
+		</collision>
+	</link>	
+
+	<!--轨道-->
+	<link name="rail1">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.015 0.0 0.0" />
+			<geometry><box size="0.03 0.4 0.02" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.015 0.0 0.0"/>
+			<geometry><box size="0.03 0.4 0.02" /></geometry>
+		</collision>
+	</link>
+	<link name="rail2">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.015 0.0 0.0" />
+			<geometry><box size="0.03 0.4 0.02" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.015 0.0 0.0"/>
+			<geometry><box size="0.03 0.4 0.02" /></geometry>
+		</collision>
+	</link>
+
+	<!--琴键部分-->
+	<!--key1-->
+	<link name="key1_up">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025" />
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025"/>
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</collision>
+	</link>
+	<link name="key1_down">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0" />
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0"/>
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</collision>
+	</link>
+	<!--key2-->
+	<link name="key2_up">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025" />
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025"/>
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</collision>
+	</link>
+	<link name="key2_down">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0" />
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0"/>
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</collision>
+	</link>
+	<!--key3-->
+	<link name="key3_up">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025" />
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025"/>
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</collision>
+	</link>
+	<link name="key3_down">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0" />
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0"/>
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</collision>
+	</link>
+	<!--key4-->
+	<link name="key4_up">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025" />
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025"/>
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</collision>
+	</link>
+	<link name="key4_down">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0" />
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0"/>
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</collision>
+	</link>
+	<!--key5-->
+	<link name="key5_up">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025" />
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.025"/>
+			<geometry><cylinder radius="0.01"length="0.05" /></geometry>
+		</collision>
+	</link>
+	<link name="key5_down">
+		<visual>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0" />
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</visual>	
+		<collision>
+			<origin rpy="0 0 0"xyz="0.0 0.0 0.0"/>
+			<geometry><cylinder radius="0.007"length="0.04" /></geometry>
+		</collision>
+	</link>
+
+	<!--连接轨道和琴键，琴键时从左到右序号递增-->
+	<joint name="key1_up_joint" type="floating">
+		<parent link="rail1"/>
+		<child link="key1_up"/>
+		<origin rpy="0 0 0"xyz="0.0 0.1 0.00"/>
+	</joint>
+	<joint name="key2_up_joint" type="floating">
+		<parent link="rail2"/>
+		<child link="key2_up"/>
+		<origin rpy="0 0 0"xyz="0.0 0.05 0.00"/>
+	</joint>
+	<joint name="key3_up_joint" type="floating">
+		<parent link="rail2"/>
+		<child link="key3_up"/>
+		<origin rpy="0 0 0"xyz="0.0 0 0.00"/>
+	</joint>
+	<joint name="key4_up_joint" type="floating">
+		<parent link="rail2"/>
+		<child link="key4_up"/>
+		<origin rpy="0 0 0"xyz="0.0 -0.05 0.00"/>
+	</joint>
+	<joint name="key5_up_joint" type="floating">
+		<parent link="rail2"/>
+		<child link="key5_up"/>
+		<origin rpy="0 0 0"xyz="0.0 -0.1 0.00"/>
+	</joint>
+
+
+	<!--连接琴键上下部分-->
+	<joint name="key1_down_joint" type="prismatic">
+		<parent link="key1_up"/>
+		<child link="key1_down"/>
+		<origin rpy="0 0 0"xyz="0.0 0 0.00"/>
+		<limit	effort="10"	velocity="1.0"	lower="-0.005"	upper="0.02"/>
+	</joint>
+	<joint name="key2_down_joint" type="prismatic">
+		<parent link="key2_up"/>
+		<child link="key2_down"/>
+		<origin rpy="0 0 0"xyz="0.0 0 0.00"/>
+		<limit	effort="10"	velocity="1.0"	lower="-0.005"	upper="0.02"/>
+	</joint>
+	<joint name="key3_down_joint" type="prismatic">
+		<parent link="key3_up"/>
+		<child link="key3_down"/>
+		<origin rpy="0 0 0"xyz="0.0 0 0.00"/>
+		<limit	effort="10"	velocity="1.0"	lower="-0.005"	upper="0.02"/>
+	</joint>
+	<joint name="key4_down_joint" type="prismatic">
+		<parent link="key4_up"/>
+		<child link="key4_down"/>
+		<origin rpy="0 0 0"xyz="0.0 0 0.00"/>
+		<limit	effort="10"	velocity="1.0"	lower="-0.005"	upper="0.02"/>
+	</joint>
+	<joint name="key5_down_joint" type="prismatic">
+		<parent link="key5_up"/>
+		<child link="key5_down"/>
+		<origin rpy="0 0 0"xyz="0.0 0 0.00"/>
+		<limit	effort="10"	velocity="1.0"	lower="-0.005"	upper="0.02"/>
+	</joint>
+
+
+
+	<!--连接底座和杆子-->
+	<joint name="base_joint" type="fixed">
+		<parent link="underpan"/>
+		<child link="spine"/>
+		<origin rpy="0 0 0"xyz="0.175 0 0.05"/>
+	</joint>
+	
+	<!--连接rail1和杆子-->
+	<joint name="up_joint1" type="fixed">
+		<parent link="spine"/>
+		<child link="rail1"/>
+		<origin rpy="0 0 0"xyz="0.025 0 1.2"/>
+	</joint>
+	<!--连接rail1和rail2-->
+	<joint name="up_joint2" type="fixed">
+		<parent link="rail1"/>
+		<child link="rail2"/>
+		<origin rpy="0 0 0"xyz="0.03 0 0"/>
+	</joint>
+	
+	<!--连接四个轮子-->
+	<!--
+	参数：
+	底盘 x 0.4 y 0.3 z 0.5
+	轮子 radius 0.1 length 0.05
+	关节原点在轮子[子关节]原点？
+	设计时，轮子中心在与底盘头尾平行的线上，横向距离时底盘y/2+轮子length/2
+	-->
+	<!--左前-->
+	<joint name="wheel_joint1" type="planar">
+		<parent link="underpan"/>
+		<child link="wheel_left_front"/>
+		<origin rpy="1.57 0 0"xyz="0.2 0.175 0"/>
+		<!--rpy即欧拉角是用弧度表示，90度应该是1.57-->
+		<axis xyz="0 0 1" />
+	</joint>
+	<!--右前-->
+	<joint name="wheel_joint2" type="planar">
+		<parent link="underpan"/>
+		<child link="wheel_right_front"/>
+		<origin rpy="1.57 0 0"xyz="0.2 -0.175 0"/>
+		<axis xyz="0 0 1" />
+	</joint>
+	<!--左后-->
+	<joint name="wheel_joint3" type="planar">
+		<parent link="underpan"/>
+		<child link="wheel_left_back"/>
+		<origin rpy="1.57 0 0"xyz="-0.2 0.175 0"/>
+		<axis xyz="0 0 1" />
+	</joint>
+	<!--右后-->
+	<joint name="wheel_joint4" type="planar">
+		<parent link="underpan"/>
+		<child link="wheel_right_back"/>
+		<origin rpy="1.57 0 0"xyz="-0.2 -0.175 0"/>
+		<axis xyz="0 0 1" />
+	</joint>
+	
+</robot>
+
